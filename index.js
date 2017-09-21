@@ -10,7 +10,15 @@ function toCamelCase(sentence){
   }
   var wordsOfSentence = [];
 
-  wordsOfSentence = sentence.toString().split(' ');
+  if(hasCharacter(sentence, ' ')){
+    wordsOfSentence = sentence.toString().split(' ');
+  }
+  if(hasCharacter(sentence, '_')){
+    wordsOfSentence = sentence.toString().split('_');
+  }
+  if(hasCharacter(sentence, '.')){
+    wordsOfSentence = sentence.toString().split('.');
+  }
 
   wordsOfSentence[0] = wordsOfSentence[0].charAt(0).toLowerCase() + wordsOfSentence[0].slice(1);
 
@@ -24,4 +32,8 @@ function toCamelCase(sentence){
   });
 
   return newCamelCaseString;
+}
+
+function hasCharacter(string, character){
+  return string.indexOf(character) >=0;
 }
